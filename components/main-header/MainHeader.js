@@ -1,6 +1,5 @@
 import {View} from "react-native";
 import ProfileHeader from "../profile-header/ProfileHeader";
-import HomeFilterBar from "../home-filter-bar/HomeFilterBar";
 
 const MainHeader = () => {
     return (
