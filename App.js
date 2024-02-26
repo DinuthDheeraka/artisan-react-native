@@ -1,26 +1,43 @@
-import {ScrollView, StyleSheet, View} from 'react-native';
-import ProductCardContainer from "./components/product-card-container/ProductCardContainer";
-import HomeFilterBar from "./components/home-filter-bar/HomeFilterBar";
-import MainHeader from "./components/main-header/MainHeader";
+import {NavigationContainer} from "@react-navigation/native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
+import HomeScreen from "./screens/HomeScreen";
+import ProductViewScreen from "./screens/ProductViewScreen";
+import ArtistProfileScreen from "./screens/ArtistProfileScreen";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+const App = () => {
     return (
-        <View style={styles.container}>
-            <ScrollView contentContainerStyle={{alignItems: "center"}} style={{width: '100%'}}>
-                <MainHeader/>
-                <HomeFilterBar/>
-                <ProductCardContainer/>
-            </ScrollView>
-        </View>
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen name="HOME" component={HomeScreen} options={
+                    {
+                        headerShown: false,
+                        headerTitleStyle: {
+                            color: '#101010',
+                            fontWeight: '500',
+                            fontSize: 14
+                        }
+                    }
+                }/>
+                <Stack.Screen name="ABOUT THE ARTWORK" component={ProductViewScreen} options={{
+                    headerShown: true, headerTitleStyle: {
+                        color: '#101010',
+                        fontWeight: '500',
+                        fontSize: 14
+                    }
+                }}/>
+                <Stack.Screen name="ARTIST PROFILE" component={ArtistProfileScreen} options={{
+                    headerShown: true,
+                    headerTitleStyle: {
+                        color: '#111111',
+                        fontWeight: '500',
+                        fontSize: 14,
+                    }
+                }}/>
+            </Stack.Navigator>
+        </NavigationContainer>
     );
-}
+};
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fffff0',
-        // backgroundColor: '#fff9f0',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+export default App;
