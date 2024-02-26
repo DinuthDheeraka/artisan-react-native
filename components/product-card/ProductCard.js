@@ -1,10 +1,18 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {useNavigation} from "@react-navigation/native";
 
 const ProductCard = ({image, artist, title, price, description}) => {
+
+    const navigation = useNavigation();
+
     return (
         <View style={styles.card}>
-            <Image src={image} style={styles.image}/>
+            <TouchableOpacity style={styles.imageTouchable} onPress={() => {
+                navigation.navigate("ABOUT THE ARTWORK");
+            }}>
+                <Image src={image} style={styles.image}/>
+            </TouchableOpacity>
             <View style={styles.descriptionArea}>
                 <Text style={styles.artist}>{artist}</Text>
                 <Text style={styles.title}>{title}</Text>
@@ -47,6 +55,11 @@ const styles = StyleSheet.create({
         width: '100%',
         height: 500,
         objectFit: 'cover'
+    },
+    imageTouchable: {
+        borderRadius: 6,
+        width: '100%',
+        height: 500,
     },
     artist: {
         color: 'black',
