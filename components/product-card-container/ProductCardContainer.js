@@ -1,10 +1,23 @@
-import {ScrollView, StyleSheet, View} from "react-native";
+import {ScrollView, StyleSheet, Text, View} from "react-native";
 import ProductCard from "../product-card/ProductCard";
 
 const ProductCardContainer = () => {
+
     return (
         <ScrollView style={styles.productCardContainer}>
             <View style={{width: '100%', alignItems: 'center', gap: 15}}>
+                {/*<View style={{*/}
+                {/*    flexDirection: 'row',*/}
+                {/*    width: '92%',*/}
+                {/*    // borderWidth: 1,*/}
+                {/*    // borderColor: '#d2d2d2',*/}
+                {/*    // backgroundColor: '#ffffff',*/}
+                {/*    padding: 10,*/}
+                {/*    alignItems: 'flex-start',*/}
+                {/*    justifyContent: 'flex-start'*/}
+                {/*}}>*/}
+                {/*    <Text style={{fontWeight: '500', fontSize: 16}}>New Artworks</Text>*/}
+                {/*</View>*/}
                 <ProductCard
                     image={'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/640px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg'}
                     title={'Monalisa'} artist={'Dinuth Dheeraka'} price={12000}
@@ -30,7 +43,6 @@ const styles = StyleSheet.create({
         width: '100%',
         marginTop: 10,
         paddingTop: 5,
-        // backgroundColor: 'gray'
     }
 });
 
