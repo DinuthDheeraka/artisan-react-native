@@ -1,7 +1,7 @@
 import {Image, StyleSheet, Text, View} from "react-native";
 import ProductCardContainer from "../product-card-container/ProductCardContainer";
 
-const ArtistProfile = () => {
+const ArtistProfile = ({artist}) => {
 
     return (
         <View style={{backgroundColor: undefined, marginTop: 20, alignItems: 'center', width: '100%'}}>
@@ -19,22 +19,25 @@ const ArtistProfile = () => {
                     borderRadius: 100,
                     height: 100
                 }}
-                       src={'https://expertphotography.b-cdn.net/wp-content/uploads/2020/08/social-media-profile-photos-3.jpg'}/>
+                       src={artist.image}/>
 
                 <View style={{width: '100%', paddingTop: 50, gap: 2, alignItems: 'center'}}>
-                    <Text style={{paddingTop: 0, fontSize: 18, fontWeight: "600"}}>Dinuth Dheeraka</Text>
-                    <Text style={{fontWeight: '500'}}>• Artist (Drawing, Painting) • Born 1964 •</Text>
+                    <Text style={{paddingTop: 0, fontSize: 18, fontWeight: "600"}}>{artist.name}</Text>
+                    <Text style={{paddingTop: 0, fontSize: 14, fontWeight: "400"}}>dinuthdheeraka@gmail.com</Text>
+                    <Text style={{fontWeight: '400'}}>• Artist {artist.type} • Born {artist.dobYear} •</Text>
                 </View>
 
                 <View style={{paddingTop: 10, flexDirection: "column", gap: 5}}>
                     <Text style={{fontWeight: '500', fontSize: 16}}>Biography</Text>
-                    <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus, assumenda explicabo
-                        fugit minus nostrum nulla quaerat recusandae ut vero.
-                        Assumenda atque culpa dicta dolorem enim odio quia ratione sed voluptate.</Text>
+                    <Text>{artist.about}</Text>
                 </View>
             </View>
 
-            <ProductCardContainer/>
+            <ProductCardContainer artistId={artist.id}/>
+
+            <View style={{width: '100%', height: 20}}>
+            </View>
+
         </View>
     );
 }
@@ -52,7 +55,6 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 2,
         elevation: 1,
-        height: 460,
         position: "relative",
         justifyContent: 'flex-start',
         alignItems: 'center',

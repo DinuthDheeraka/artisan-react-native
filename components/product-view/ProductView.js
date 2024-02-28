@@ -1,41 +1,48 @@
-import {Image, StyleSheet, Text, View} from "react-native";
+import {Image, Linking, StyleSheet, Text, View} from "react-native";
 import CustomButton from "../custom-button/CustomButton";
 import ArtworkViewArtist from "../artwork-view-artist/ArtworkViewArtist";
+import {artists, artworks} from "../../db/db";
 
-const ProductView = () => {
+const ProductView = ({artworkId}) => {
+
+    const artwork = artworks[artworkId - 1];
+    const artist = artists[artwork.artistId - 1];
 
     return (
         <View style={styles.productViewContainer}>
 
             <View style={styles.productTitleCardContainer}>
                 <View style={{flexDirection: "column", gap: 2}}>
-                    <Text style={{fontSize: 18, fontWeight: "700"}}>MONALISA (2023)</Text>
-                    <Text style={{fontSize: 15}}>Drawing by Dinuth Dheeraka</Text>
+                    <Text style={{fontSize: 18, fontWeight: "700"}}>{artwork.title}</Text>
+                    <Text style={{fontSize: 15}}>{artwork.type} by {artist.name}</Text>
                 </View>
                 <Image
                     style={{width: "100%", borderRadius: 8, height: 500}}
-                    src={'https://cdn2.oceansbridge.com/2017/08/01093520/Windswept-John-William-Waterhouse-Oil-Painting-1.jpg'}/>
+                    src={artwork.image}/>
                 <View style={{flexDirection: "column", gap: 5}}>
-                    <Text style={{fontSize: 15}}>Drawing - Pastel</Text>
-                    <Text style={{fontSize: 15}}>100 x 200 cm</Text>
-                    <Text style={{fontSize: 20, fontWeight: '700'}}>LKR 1200.00</Text>
+                    <Text style={{fontSize: 15}}>{artwork.medium}</Text>
+                    <Text style={{fontSize: 15}}>{artwork.size}</Text>
+                    <Text style={{fontSize: 20, fontWeight: '700'}}>LKR {artwork.price.toFixed(2)}</Text>
                 </View>
 
-                <CustomButton title={'Enquire'} height={48} width={'100%'}/>
+                <CustomButton
+                    onPress={() => {
+                        Linking.openURL(`mailto:${artist.email}?subject=Enquire about ${artwork.title}`)
+                    }}
+                    title={'Enquire'}
+                    height={48}
+                    width={'100%'}/>
 
                 <View style={{flexDirection: "column", gap: 4}}>
                     <Text style={{fontSize: 18, fontWeight: "600"}}>Description</Text>
                     <Text style={{fontSize: 16}}>
-                        "Harmony in Chaos" is a mesmerizing abstract artwork that captivates
-                        the viewer with its intricate dance of colors and shapes. The artist
-                        skillfully blends vibrant hues of blues, purples, and gold, creating a
-                        dynamic composition that exudes energy and movement.
+                        {artwork.about}
                     </Text>
                 </View>
 
             </View>
 
-            <ArtworkViewArtist/>
+            <ArtworkViewArtist artist={artist} artwork={artwork}/>
 
             <View style={{width: '100%', height: 10}}>
 
@@ -54,8 +61,8 @@ const styles = StyleSheet.create({
         gap: 10,
         // height: 60,
         width: '100%',
-       // borderWidth: 1,
-       // borderColor: undefined
+        // borderWidth: 1,
+        // borderColor: undefined
     },
     productTitleCardContainer: {
         borderWidth: 1,

@@ -10,7 +10,8 @@ const HomeScreen = () => {
             <ScrollView contentContainerStyle={{alignItems: "center"}} style={{width: '100%'}}>
                 <MainHeader/>
                 <HomeFilterBar/>
-                <ProductCardContainer/>
+                <ProductCardContainer artistId={undefined}/>
+                <View style={{height: 20, width: '100%'}}></View>
             </ScrollView>
         </View>
     );

@@ -3,6 +3,7 @@ import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import HomeScreen from "./screens/HomeScreen";
 import ProductViewScreen from "./screens/ProductViewScreen";
 import ArtistProfileScreen from "./screens/ArtistProfileScreen";
+import LoginPage from "./components/login-page/LoginPage";
 
 const Stack = createNativeStackNavigator();
 
@@ -10,6 +11,16 @@ const App = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen name="LOGIN" component={LoginPage} options={
+                    {
+                        headerShown: false,
+                        headerTitleStyle: {
+                            color: '#101010',
+                            fontWeight: '500',
+                            fontSize: 14
+                        }
+                    }
+                }/>
                 <Stack.Screen name="HOME" component={HomeScreen} options={
                     {
                         headerShown: false,

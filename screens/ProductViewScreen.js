@@ -1,12 +1,18 @@
 import React from 'react';
 import {ScrollView, StyleSheet, View} from 'react-native';
 import ProductView from "../components/product-view/ProductView";
+import {useRoute} from "@react-navigation/native";
 
 const ProductViewScreen = () => {
+
+    const route = useRoute();
+
+    console.log(route.params.id)
+
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{alignItems: "center"}} style={{width: '100%'}}>
-                <ProductView/>
+                <ProductView artworkId={route.params.id}/>
             </ScrollView>
         </View>
     );

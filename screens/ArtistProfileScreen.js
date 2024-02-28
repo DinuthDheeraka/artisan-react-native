@@ -1,11 +1,15 @@
 import {ScrollView, StyleSheet, View} from "react-native";
 import ArtistProfile from "../components/artist-profile/ArtistProfile";
+import {useRoute} from "@react-navigation/native";
 
 const ArtistProfileScreen = () => {
+
+    const route = useRoute();
+
     return (
         <View style={styles.container}>
             <ScrollView contentContainerStyle={{alignItems: "center"}} style={{width: '100%'}}>
-                <ArtistProfile/>
+                <ArtistProfile artist={route.params}/>
             </ScrollView>
         </View>
     );
