@@ -3,6 +3,7 @@ const artworks = [
         id: 1,
         image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/640px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg',
         title: 'Monalisa (2023)',
+        artist: 'Dinuth Dheeraka',
         medium: 'Sculpture - Wire',
         type: 'Sculpture',
         description: 'Sculpture - Wire | 36x20 cm',
@@ -40,7 +41,7 @@ const artworks = [
     {
         id: 4,
         image: 'https://www.designboom.com/wp-content/uploads/2023/12/schiaparelli-chanel-celebrated-new-bronze-work-exhibition-cromwell-place-designboom-01.jpg',
-        artist: 'Dinuth Dheeraka',
+        artist: 'Kaveen Fonseka',
         title: 'Monalisa',
         medium: 'Sculpture - Wire',
         type: 'Sculpture',
